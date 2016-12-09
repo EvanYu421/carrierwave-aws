@@ -56,7 +56,7 @@ module CarrierWave
       end
 
       def authenticated_url(options = {})
-        file.presigned_url(:get, aws_options.expiration_options(options)).gsub("#{uploader.aws_bucket}.s3.amazonaws.com","#{uploader.asset_host}")
+        file.presigned_url(:get, aws_options.expiration_options(options)).gsub("#{uploader.aws_bucket}.s3.amazonaws.com","#{uploader.asset_host}").gsub("https","http")
       end
 
       def public_url
